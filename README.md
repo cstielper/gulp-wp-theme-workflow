@@ -1,6 +1,16 @@
-# gulp-wp-theme-workflow
+# Gulp WordPress Theme Workflow
 
-Gulp workflow for WP theme development using [_s](http://underscores.me/). Add these files to the theme folder and run npm-install. Set the variables at the top of gulfile.js (project URL, cssOutput) and run the default task (gulp) to get started. Features include:
+Gulp workflow for WP theme development using [_s](http://underscores.me/).
+
+## To Use:
+
+1. Download your copy of _s and install in the "/wp-content/themes/" directory
+2. Add the files in this respository to the theme folder
+3. Run npm install
+4. Set the variables at the top of gulfile.js (project URL, cssOutput)
+5. Run the default task (gulp) to get started
+
+### Features Include:
 
 1. Browser refreshing using BrowserSync
 2. Sass compilation, mapping, auto-prefixing
