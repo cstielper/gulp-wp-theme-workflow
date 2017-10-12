@@ -18,7 +18,7 @@ const gulp = require('gulp'),
 // Spin up a server
 gulp.task('serve', () => {
 	browserSync.init({
-		proxy: projectURL,
+		proxy: projectURL
 	});
 });
 
@@ -27,8 +27,8 @@ gulp.task('serve', () => {
 gulp.task('php', () => {
 	gulp.src('./**/*.php').pipe(
 		browserSync.reload({
-			stream: true,
-		}),
+			stream: true
+		})
 	);
 });
 
@@ -50,21 +50,21 @@ gulp.task('css', () => {
 		.pipe(sourcemaps.init())
 		.pipe(
 			sass({
-				outputStyle: cssOutput,
-			}).on('error', sass.logError),
+				outputStyle: cssOutput
+			}).on('error', sass.logError)
 		)
 		.pipe(sourcemaps.write())
 		.pipe(
 			autoprefixer({
-				browsers: ['last 2 versions'],
-			}),
+				browsers: ['last 2 versions']
+			})
 		)
 		.pipe(gulp.dest('.'))
 		.pipe(notify({ message: 'TASK: "css" completed', onLast: true }))
 		.pipe(
 			browserSync.reload({
-				stream: true,
-			}),
+				stream: true
+			})
 		);
 });
 
@@ -84,7 +84,7 @@ gulp.task('eslint', () => {
 			// Alternatively use eslint.formatEach() (see Docs).
 			.pipe(eslint.format())
 			.pipe(
-				notify({ message: 'TASK: "eslint" completed!', onLast: true }),
+				notify({ message: 'TASK: "eslint" completed!', onLast: true })
 			)
 			// To have the process exit with an error code (1) on
 			// lint error, return the stream and pipe to failAfterError last.
@@ -100,16 +100,16 @@ gulp.task('js', () => {
 		.pipe(babel())
 		.pipe(
 			rename({
-				suffix: '.min',
-			}),
+				suffix: '.min'
+			})
 		)
 		.pipe(uglify())
 		.pipe(gulp.dest('./js/min'))
 		.pipe(notify({ message: 'TASK: "js" completed', onLast: true }))
 		.pipe(
 			browserSync.reload({
-				stream: true,
-			}),
+				stream: true
+			})
 		);
 });
 
