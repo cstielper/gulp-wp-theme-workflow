@@ -13,6 +13,7 @@ const gulp = require('gulp'),
 	plumber = require('gulp-plumber'),
 	eslint = require('gulp-eslint'),
 	notify = require('gulp-notify'),
+	prettier = require('gulp-prettier'),
 	browserSync = require('browser-sync').create();
 
 // Spin up a server
@@ -97,6 +98,13 @@ gulp.task('js', () => {
 	gulp
 		.src('./js/*.js')
 		.pipe(plumber())
+		.pipe(prettier({
+			tabWidth: 2,
+			printWidth: 80,
+			singleQuote: true,
+			semicolons: true
+		}))
+		.pipe(gulp.dest('./js'))
 		.pipe(babel())
 		.pipe(
 			rename({
