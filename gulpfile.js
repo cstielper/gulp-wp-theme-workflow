@@ -3,18 +3,18 @@ const projectURL = 'Your local domain here'; // URL of your local domain
 const cssOutput = 'nested'; // nested, expanded, compact, compressed
 
 const gulp = require('gulp'),
-imageOptim = require('gulp-imageoptim'),
-sass = require('gulp-sass'),
-sourcemaps = require('gulp-sourcemaps'),
-autoprefixer = require('gulp-autoprefixer'),
-babel = require('gulp-babel'),
-rename = require('gulp-rename'),
-uglify = require('gulp-uglify'),
-plumber = require('gulp-plumber'),
-eslint = require('gulp-eslint'),
-notify = require('gulp-notify'),
-prettier = require('gulp-prettier'),
-browserSync = require('browser-sync').create();
+	imageOptim = require('gulp-imageoptim'),
+	sass = require('gulp-sass'),
+	sourcemaps = require('gulp-sourcemaps'),
+	autoprefixer = require('gulp-autoprefixer'),
+	babel = require('gulp-babel'),
+	rename = require('gulp-rename'),
+	uglify = require('gulp-uglify'),
+	plumber = require('gulp-plumber'),
+	eslint = require('gulp-eslint'),
+	notify = require('gulp-notify'),
+	prettier = require('gulp-prettier'),
+	browserSync = require('browser-sync').create();
 
 // Spin up a server
 gulp.task('serve', () => {
