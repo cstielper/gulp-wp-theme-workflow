@@ -102,7 +102,8 @@ gulp.task('prettier', () => {
 			printWidth: 80,
 			singleQuote: true
 		}))
-		.pipe(gulp.dest('./js'));
+		.pipe(gulp.dest('./js'))
+		.pipe(notify({ message: 'TASK: "prettier" completed', onLast: true }));
 });
 
 // Compile JS: Transpile with Babel, rename file, minify output, reload browser
