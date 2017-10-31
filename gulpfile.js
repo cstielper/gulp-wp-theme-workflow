@@ -54,12 +54,12 @@ gulp.task('css', () => {
 				outputStyle: cssOutput
 			}).on('error', sass.logError)
 		)
-		.pipe(sourcemaps.write())
 		.pipe(
 			autoprefixer({
 				browsers: ['last 2 versions']
 			})
 		)
+		.pipe(sourcemaps.write())
 		.pipe(gulp.dest('.'))
 		.pipe(notify({ message: 'TASK: "css" completed', onLast: true }))
 		.pipe(
