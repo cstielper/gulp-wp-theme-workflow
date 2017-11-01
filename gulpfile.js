@@ -130,11 +130,11 @@ gulp.task('js', () => {
 
 // Watch for changes and run tasks
 gulp.task('watch', ['serve'], () => {
-//gulp.watch('imgs/*', ['imgs']);
-gulp.watch('sass/**/*.scss', ['css']);
-gulp.watch('js/*.js', ['js']);
-gulp.watch('**/*.php', ['php']);
-//gulp.watch('./src/js/**/*.js', ['eslint']); Linting in code editor. Command can still be run from terminal if you want to lint there
+	//gulp.watch('imgs/*', ['imgs']);
+	gulp.watch('sass/**/*.scss', ['css']);
+	gulp.watch('js/*.js', ['js']);
+	gulp.watch('**/*.php', ['php']);
+	//gulp.watch('./src/js/**/*.js', ['eslint']); Linting in code editor. Command can still be run from terminal if you want to lint there
 });
 
 // Default task
