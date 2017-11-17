@@ -26,7 +26,9 @@ gulp.task('serve', () => {
 // PHP/HTML
 // Reload browser on changes to any files
 gulp.task('php', () => {
-	gulp.src('./**/*.php').pipe(
+	gulp.src('./**/*.php')
+	.pipe(notify({ message: 'TASK: "php" completed', onLast: true }))
+	.pipe(
 		browserSync.reload({
 			stream: true
 		})
