@@ -18,5 +18,5 @@ There is a task to optimize images (gulp imgs) using imageOptim, but it is hit o
 1. Download your copy of _s and install in the "/wp-content/themes/" directory
 2. Add the files in this respository to the theme folder (you can omit README.md)
 3. Run npm install
-4. Set the variables at the top of gulfile.js (project URL, cssOutput)
+4. Set the URL of your local environment in the "projectURL" variable at the top of [gulpfile.js](gulpfile.js)
 5. Run the default task (gulp) to get started
