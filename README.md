@@ -6,12 +6,8 @@ Gulp workflow for WP theme development using [_s](http://underscores.me/).
 
 1. Browser refreshing using BrowserSync
 2. Sass compilation, mapping, auto-prefixing
-3. Javascript formatting with prettier, transpiling with Babel, minification
-4. JS linting with ES Lint. Currently, only using recommened rules and console warning.
-
-**IMPORTANT: Prettier extension in VS Code should be disabled while working on project!!!**
-
-There is a task to optimize images (gulp imgs) using imageOptim, but it is hit or miss as to whether it works or not. Optimizing manually will probably yield better results.
+3. Javascript minification. Transpiling with Babel.
+4. JS linting with ES Lint through VSCode.
 
 ## Installation:
 
