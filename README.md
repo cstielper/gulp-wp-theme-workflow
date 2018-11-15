@@ -1,12 +1,20 @@
 # Gulp WordPress Theme Workflow
 
+![Version 2.0](https://img.shields.io/badge/Version-2.0-brightgreen.svg)
+
 Gulp workflow for WP theme development using [_s](http://underscores.me/).
+
+**IMPORTANT: This workflow has been updated to use Gulp 4. You will need to install the Gulp CLI before using:**
+
+`
+npm install gulp-cli -g
+`
 
 ## Features:
 
 1. Browser refreshing using BrowserSync
 2. Sass compilation, mapping, auto-prefixing
-3. Javascript minification. Transpiling with Babel.
+3. Javascript transpiling with Babel, minification, mapping
 4. JS linting with ES Lint through VSCode.
 
 ## Installation:

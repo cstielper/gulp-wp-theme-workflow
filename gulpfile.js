@@ -1,17 +1,21 @@
-// Set up some variables for your build
-const projectURL = 'Your local domain here'; // URL of your local domain
+/* eslint-disable */
+const projectURL = 'http://wordpress-development.test/'; // URL of your local domain
 
 const gulp = require('gulp'),
+  newer = require('gulp-newer'),
   sass = require('gulp-sass'),
   sourcemaps = require('gulp-sourcemaps'),
   autoprefixer = require('gulp-autoprefixer'),
-  cleanCSS = require('gulp-clean-css'),
   babel = require('gulp-babel'),
   rename = require('gulp-rename'),
   uglify = require('gulp-uglify'),
   plumber = require('gulp-plumber'),
   notify = require('gulp-notify'),
   browserSync = require('browser-sync').create();
+
+const errorHandler = r => {
+  notify.onError('❗️❗️❗️  ERROR: <%= error.message %>')(r);
+};
 
 // Spin up a server
 gulp.task('serve', () => {
@@ -20,73 +24,88 @@ gulp.task('serve', () => {
   });
 });
 
+// Hot reloading
+const reload = done => {
+  browserSync.reload();
+  gulp
+    .src('.')
+    .pipe(notify({ message: '✅ 👍 ✅  Reloading...', onLast: true }));
+  done();
+};
+
 // PHP/HTML
-// Reload browser on changes to any files
-gulp.task('php', () => {
+gulp.task('php', () =>
   gulp
     .src('./**/*.php')
-    .pipe(notify({ message: 'TASK: "php" completed', onLast: true }))
-    .pipe(
-      browserSync.reload({
-        stream: true,
-      })
-    );
-});
+    .pipe(notify({ message: '✅ 👍 ✅  Completed Task: "php"', onLast: true }))
+    .pipe(browserSync.stream())
+);
 
-// CSS
-// Compile Sass: create source maps, minify output, autoprefix, reload browser
-gulp.task('css', () => {
+// Compile Sass: Create sourcemaps, minify output, autoprefix
+gulp.task('css', () =>
   gulp
     .src('./sass/**/*.scss')
+    .pipe(plumber(errorHandler))
     .pipe(sourcemaps.init())
     .pipe(
       sass({
-        outputStyle: 'nested',
+        outputStyle: 'compressed',
       }).on('error', sass.logError)
     )
     .pipe(
       autoprefixer({
-        browsers: ['last 2 versions'],
+        grid: true,
+        browsers: ['last 2 version'],
       })
     )
-    .pipe(cleanCSS())
-    .pipe(sourcemaps.write('.'))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('.'))
-    .pipe(notify({ message: 'TASK: "css" completed', onLast: true }))
-    .pipe(
-      browserSync.reload({
-        stream: true,
-      })
-    );
-});
+    .pipe(notify({ message: '✅ 👍 ✅  Completed Task: "css"', onLast: true }))
+    .pipe(browserSync.stream())
+);
 
-// Compile JS: Transpile with Babel, rename file, minify output, reload browser
-gulp.task('js', () => {
+// Compile JS: Create sourcemaps, transpile with Babel, rename file, minify output
+gulp.task('js', () =>
   gulp
     .src('./js/*.js')
-    .pipe(plumber())
-    .pipe(babel())
+    .pipe(newer('./js/min'))
+    .pipe(plumber(errorHandler))
+    .pipe(sourcemaps.init())
+    .pipe(
+      babel({
+        presets: [
+          [
+            '@babel/preset-env',
+            {
+              targets: {
+                browsers: ['last 2 versions'],
+              },
+            },
+          ],
+        ],
+      })
+    )
     .pipe(
       rename({
         suffix: '.min',
       })
     )
     .pipe(uglify())
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('./js/min'))
-    .pipe(notify({ message: 'TASK: "js" completed', onLast: true }))
-    .pipe(
-      browserSync.reload({
-        stream: true,
-      })
-    );
-});
-
-// Watch for changes and run tasks
-gulp.task('watch', ['serve'], () => {
-  gulp.watch('sass/**/*.scss', ['css']);
-  gulp.watch('js/*.js', ['js']);
-  gulp.watch('**/*.php', ['php']);
-});
+    .pipe(notify({ message: '✅ 👍 ✅   Completed Task: "js"', onLast: true }))
+    .pipe(browserSync.stream())
+);
 
 // Default task
-gulp.task('default', ['watch']);
+gulp.task(
+  'default',
+  gulp.parallel('serve', () => {
+    gulp.watch('**/*.php', gulp.series('php', reload));
+    gulp.watch('sass/**/*.scss', gulp.series('css', reload));
+    gulp.watch('js/*.js', gulp.series('js', reload));
+    gulp
+      .src('.')
+      .pipe(notify({ message: '✅ 👍 ✅  Starting...', onLast: true }));
+  })
+);
