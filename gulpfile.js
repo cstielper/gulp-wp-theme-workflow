@@ -58,7 +58,7 @@ gulp.task('css', () =>
         browsers: ['last 2 version'],
       })
     )
-    .pipe(sourcemaps.write())
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('.'))
     .pipe(notify({ message: '✅ 👍 ✅  Completed Task: "css"', onLast: true }))
     .pipe(browserSync.stream())
