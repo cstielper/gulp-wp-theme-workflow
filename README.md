@@ -1,6 +1,6 @@
 # Gulp WordPress Theme Workflow
 
-![Version 2.0](https://img.shields.io/badge/Version-2.0-brightgreen.svg)
+![Version 2.1](https://img.shields.io/badge/Version-2.1-brightgreen.svg)
 
 Gulp workflow for WP theme development using [_s](http://underscores.me/).
 
