@@ -1,7 +1,7 @@
 {
-  "editor.tabSize": 2,
-  "editor.insertSpaces": false,
-  "editor.detectIndentation": true,
-  "editor.formatOnSave": false,
-  "files.trimTrailingWhitespace": true,
+  "phpcs.standard": "WordPress",
+  "phpcbf.standard": "WordPress",
+  "search.exclude": {
+    "**/vendor": true
+  },
 }

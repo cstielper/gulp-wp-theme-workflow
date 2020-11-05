@@ -1,6 +1,6 @@
 # Gulp WordPress Theme Workflow
 
-![Version 2.1](https://img.shields.io/badge/Version-2.1-brightgreen.svg)
+![Version 3.0.0](https://img.shields.io/badge/Version-3.0.0-brightgreen.svg)
 
 Gulp workflow for WP theme development using [_s](http://underscores.me/).
 
@@ -24,3 +24,8 @@ npm install gulp-cli -g
 3. Run npm install
 4. Set the URL of your local environment in the "projectURL" variable at the top of [gulpfile.js](gulpfile.js)
 5. Run the default task (gulp) to get started
+
+## Organization:
+1. Work out of the "sass" and "js" folders to maintain theme CSS/JS as normal.
+2. For Gutenberg editor styles, create a folder called "editor-styles" and place your scss files there. They will compile a stylesheet to the root of the theme.
+3. For ACF blocks, create a folder named "acf-blocks" and add directories for individual blocks. SCSS and JS files will be processed to the same folder as the block.
