@@ -1,0 +1,4 @@
+node_modules/**
+vendor/**
+js/min/**
+acf-blocks/**/*.min.js
