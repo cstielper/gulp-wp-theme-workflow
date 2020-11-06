@@ -5,6 +5,7 @@
     "ignoreFiles": [
         "sass/_normalize.scss",
         "style.css",
+        "style-rtl.css",
         "editor-style.css",
         "acf-blocks/**/*.css"
     ],
