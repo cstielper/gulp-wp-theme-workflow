@@ -112,7 +112,6 @@ gulp.task( 'theme-js', () =>
 		.src( './js/*.js' )
 		.pipe( newer( './js/min' ) )
 		.pipe( plumber( errorHandler ) )
-		.pipe( sourcemaps.init() )
 		.pipe(
 			babel()
 		)
@@ -122,7 +121,6 @@ gulp.task( 'theme-js', () =>
 			} )
 		)
 		.pipe( uglify() )
-		.pipe( sourcemaps.write() )
 		.pipe( gulp.dest( './js/min' ) )
 		.pipe( notify( { message: '✅ 👍🏼 ✅   Completed Task: "theme-js"', onLast: true } ) )
 		.pipe( browserSync.stream() )
