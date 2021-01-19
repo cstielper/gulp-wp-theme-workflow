@@ -6,7 +6,7 @@
         "sass/_normalize.scss",
         "style.css",
         "style-rtl.css",
-        "editor-style.css",
+        "editor-styles.css",
         "acf-blocks/**/*.css"
     ],
     "rules": {
