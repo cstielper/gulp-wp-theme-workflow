@@ -42,7 +42,10 @@
   },
   "scripts": {
     "lint:scss": "wp-scripts lint-style 'sass/**/*.scss'",
-    "lint:js": "wp-scripts lint-js",
+    "lint:editor-scss": "wp-scripts lint-style 'editor-styles/**/*.scss'",
+    "lint:acf-blocks-scss": "wp-scripts lint-style 'acf-blocks/**/*.scss'",
+    "lint:js": "wp-scripts lint-js 'js/*.js'",
+    "lint:acf-blocks-js": "wp-scripts lint-js 'acf-blocks/**/*.js'",
     "bundle": "dir-archiver --src . --dest ../_s.zip --exclude .DS_Store .stylelintrc.json .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules vendor package-lock.json package.json .travis.yml phpcs.xml.dist sass style.css.map"
   }
 }
